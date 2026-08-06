@@ -1,9 +1,12 @@
 import './App.css'
 import type { Product } from './types/product'
 import { ProductGrid } from './ProductGrid'
+import { useState } from 'react'
 
 
 function App() {
+
+  const [cart, setCart] = useState<Product[]>([]);
 
   const productList: Product[] = [
     {
@@ -50,10 +53,14 @@ function App() {
     }
   ]
 
+  function addToCart(product: Product) {
+    setCart([...cart, product]);
+  }
+
   return (
     <div>
       <h1>MiMart</h1>
-      <ProductGrid productList={productList}/>
+      <ProductGrid productList={productList} addToCart= {addToCart}/>
     </div>
   )
 }
