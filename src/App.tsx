@@ -1,7 +1,8 @@
-import './App.css'
-import type { Product } from './types/product'
-import { ProductGrid } from './ProductGrid'
-import { useState } from 'react'
+import './App.css';
+import type { Product } from './types/product';
+import { ProductGrid } from './ProductGrid';
+import { useState } from 'react';
+import Cart from './Cart';
 
 
 function App() {
@@ -54,13 +55,14 @@ function App() {
   ]
 
   function addToCart(product: Product) {
-    setCart([...cart, product]);
+    setCart(prevCart => [...prevCart, product]);
   }
 
   return (
     <div>
       <h1>MiMart</h1>
       <ProductGrid productList={productList} addToCart= {addToCart}/>
+      <Cart cart={cart} />
     </div>
   )
 }
