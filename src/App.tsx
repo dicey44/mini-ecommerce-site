@@ -6,11 +6,6 @@ import Cart from './Cart';
 
 
 function App() {
-  let testArr = ["red", "pink", "blue"];
-
-  let filteredArr = testArr.filter(item => item === "red");
-
-  console.log(filteredArr)
 
   const [cart, setCart] = useState<CartProps[] | []>([]);
 
