@@ -4,3 +4,8 @@ export interface Product {
     image_url: string;
     id: number;
 }
+
+export interface CartProps {
+    product: Product;
+    quantity: number;
+  }
