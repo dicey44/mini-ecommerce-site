@@ -1,3 +1,4 @@
+import CartItemComp from "./CartItemComp";
 import type { Product, CartItem } from "./types/product";
 
 
@@ -12,12 +13,10 @@ export default function Cart( { cart, removeFromCart }: CartAppProps) {
     return (
         <div>
             <h1>My Cart</h1>
-            {cart.map(({ product, quantity }: CartItem) => {
+            {cart.map(( item: CartItem) => {
                 return (
-                    <div key={product.id}>{product.name}<span>{" $" + product.price + " "}</span>
-                        <p>Quantity: {quantity}</p>
-                        <button onClick={() => removeFromCart(product)}>Remove From Cart</button>
-                    </div>
+                    <CartItemComp cartListing={item} removeFromCart={removeFromCart} key={item.product.id}/>
+                        
                 );
             })}
         </div>
