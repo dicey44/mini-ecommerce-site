@@ -1,8 +1,8 @@
-import type { Product, CartProps } from "./types/product";
+import type { Product, CartItem } from "./types/product";
 
 
 interface CartAppProps {
-    cart: CartProps[];
+    cart: CartItem[];
     removeFromCart: (product: Product) => void;
 }
 
@@ -12,9 +12,9 @@ export default function Cart( { cart, removeFromCart }: CartAppProps) {
     return (
         <div>
             <h1>My Cart</h1>
-            {cart.map(({ product, quantity }: CartProps, index: number) => {
+            {cart.map(({ product, quantity }: CartItem) => {
                 return (
-                    <div key={index}>{product.name}<span>{" $" + product.price + " "}</span>
+                    <div key={product.id}>{product.name}<span>{" $" + product.price + " "}</span>
                         <p>Quantity: {quantity}</p>
                         <button onClick={() => removeFromCart(product)}>Remove From Cart</button>
                     </div>

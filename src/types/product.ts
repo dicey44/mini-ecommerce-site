@@ -5,7 +5,7 @@ export interface Product {
     id: number;
 }
 
-export interface CartProps {
+export interface CartItem {
     product: Product;
     quantity: number;
   }
