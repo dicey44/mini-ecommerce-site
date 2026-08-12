@@ -5,9 +5,10 @@ import type { Product, CartItem } from "./types/product";
 interface CartAppProps {
     cart: CartItem[];
     removeFromCart: (product: Product) => void;
+    total: number;
 }
 
-export default function Cart( { cart, removeFromCart }: CartAppProps) {
+export default function Cart( { cart, removeFromCart, total }: CartAppProps) {
 
 
     return (
@@ -19,6 +20,8 @@ export default function Cart( { cart, removeFromCart }: CartAppProps) {
                         
                 );
             })}
+
+            <h3>Total: ${total}</h3>
         </div>
     )
 }

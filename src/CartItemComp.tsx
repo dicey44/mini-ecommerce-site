@@ -12,9 +12,10 @@ export default function CartItemComp( { cartListing, removeFromCart }: CartItemP
     return (
          <div>
             <img src={cartListing.product.image_url} width="150"/>
-            <p>{cartListing.product.name}<span>{" $" + cartListing.product.price + " "}</span></p>
-            
-                        <p>Quantity: {cartListing.quantity}</p>
+            <p>{cartListing.product.name}<span>{" $" + cartListing.product.price + " "} x {cartListing.quantity}</span></p>
+
+                        <strong>${cartListing.quantity * cartListing.product.price}</strong>
+                        <br/>
                         
                         <button onClick={() => removeFromCart(cartListing.product)}>Remove From Cart</button>
         </div>
