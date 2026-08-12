@@ -9,8 +9,6 @@ function App() {
 
   const [cart, setCart] = useState<CartItem[]>([]);
 
-  const [cartTotal, setCartTotal] = useState<number>(0);
-
   const productList: Product[] = [
     {
       name: "Simple Tee",
@@ -63,7 +61,7 @@ function App() {
       quantity: 1,
     }
 
-    setCartTotal(prevCartTotal => prevCartTotal + newCartObj.product.price);
+    
 
     setCart(prevCart => {
       if ((prevCart.some(item => item.product.id === newCartObj.product.id))) {
@@ -88,7 +86,7 @@ function App() {
   function removeFromCart(product: Product) {
 
     
-    setCartTotal(prevCartTotal => prevCartTotal - product.price);
+    
 
       return setCart(prevCart => prevCart
       .map(i => {
@@ -111,7 +109,7 @@ function App() {
     <div>
       <h1>MiMart</h1>
       <ProductGrid productList={productList} addToCart= {addToCart}/>
-      <Cart cart={cart} removeFromCart={removeFromCart} total={cartTotal}/>
+      <Cart cart={cart} removeFromCart={removeFromCart} addToCart={addToCart}/>
     </div>
   )
 }

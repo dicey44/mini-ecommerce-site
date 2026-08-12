@@ -4,9 +4,10 @@ import type { CartItem, Product } from "./types/product";
 interface CartItemProps {
     cartListing: CartItem;
     removeFromCart: (product: Product) => void;
+    addToCart: (product: Product) => void;
 }
 
-export default function CartItemComp( { cartListing, removeFromCart }: CartItemProps ) {
+export default function CartItemComp( { cartListing, addToCart, removeFromCart }: CartItemProps ) {
 
 
     return (
@@ -17,7 +18,8 @@ export default function CartItemComp( { cartListing, removeFromCart }: CartItemP
                         <strong>${cartListing.quantity * cartListing.product.price}</strong>
                         <br/>
                         
-                        <button onClick={() => removeFromCart(cartListing.product)}>Remove From Cart</button>
+                        <button onClick={() => removeFromCart(cartListing.product)}>Remove 1</button>
+                        <button onClick={() => addToCart(cartListing.product)}>Add 1</button>
         </div>
     )
 }
