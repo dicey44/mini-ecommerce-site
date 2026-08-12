@@ -1,12 +1,16 @@
 import type { Product } from "./types/product"
 import "./ProductCard.css"
+import { useCart } from "./CartContext";
+
 
 interface ProductCardProps {
     product: Product;
-    addToCart: (product: Product) => void;
 }
 
-export default function ProductCard( { product, addToCart }: ProductCardProps ) {
+export default function ProductCard( { product }: ProductCardProps ) {
+
+    const { addToCart } = useCart();
+
     return (
         <div>
             <img src={product.image_url} className="product-card-img"/>

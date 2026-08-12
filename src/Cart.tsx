@@ -1,23 +1,19 @@
 import CartItemComp from "./CartItemComp";
-import type { Product, CartItem } from "./types/product";
+import type { CartItem } from "./types/product";
+import { useCart } from "./CartContext";
 
 
-interface CartAppProps {
-    cart: CartItem[];
-    removeFromCart: (product: Product) => void;
-    addToCart: (product: Product) => void;
 
-}
-
-export default function Cart( { cart, removeFromCart, addToCart}: CartAppProps) {
-
+export default function Cart() {
+    
+    const { cart } = useCart();
 
     return (
         <div>
             <h1>My Cart</h1>
             {cart.map(( item: CartItem) => {
                 return (
-                    <CartItemComp cartListing={item} removeFromCart={removeFromCart} key={item.product.id} addToCart={addToCart}/>
+                    <CartItemComp cartListing={item} key={item.product.id}/>
                         
                 );
             })}

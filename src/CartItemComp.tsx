@@ -1,14 +1,13 @@
-import type { CartItem, Product } from "./types/product";
-
+import type { CartItem } from "./types/product";
+import { useCart } from "./CartContext";
 
 interface CartItemProps {
     cartListing: CartItem;
-    removeFromCart: (product: Product) => void;
-    addToCart: (product: Product) => void;
 }
 
-export default function CartItemComp( { cartListing, addToCart, removeFromCart }: CartItemProps ) {
+export default function CartItemComp( { cartListing }: CartItemProps ) {
 
+    const { removeFromCart, addToCart } = useCart();
 
     return (
          <div>

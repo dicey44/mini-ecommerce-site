@@ -1,13 +1,12 @@
 import './App.css';
-import type { Product, CartItem } from './types/product';
+import type { Product, } from './types/product';
 import { ProductGrid } from './ProductGrid';
-import { useState } from 'react';
 import Cart from './Cart';
 
 
 function App() {
 
-  const [cart, setCart] = useState<CartItem[]>([]);
+  
 
   const productList: Product[] = [
     {
@@ -54,62 +53,14 @@ function App() {
     }
   ]
 
-  function addToCart(product: Product) {
-
-    const newCartObj = {
-      product: product,
-      quantity: 1,
-    }
-
-    
-
-    setCart(prevCart => {
-      if ((prevCart.some(item => item.product.id === newCartObj.product.id))) {
-        return prevCart.map(i => {
-
-          if (i.product.id === newCartObj.product.id) {
-          
-          return {
-            product: i.product,
-            quantity: i.quantity + 1,
-          }
-          } 
-          return i;
-        })
-      }
-      
-      return [...prevCart, newCartObj];
-    })
-
-  }
-
-  function removeFromCart(product: Product) {
-
-    
-    
-
-      return setCart(prevCart => prevCart
-      .map(i => {
-        
-        
-        if (i.product.id === product.id) {
-
-          return {
-            product: i.product,
-            quantity: i.quantity - 1,
-          }
-        } 
-      
-        return i;
-      }).filter(i => i.quantity > 0));
-  }
+  
   
 
   return (
     <div>
       <h1>MiMart</h1>
-      <ProductGrid productList={productList} addToCart= {addToCart}/>
-      <Cart cart={cart} removeFromCart={removeFromCart} addToCart={addToCart}/>
+      <ProductGrid productList={productList} />
+      <Cart />
     </div>
   )
 }
