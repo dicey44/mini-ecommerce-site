@@ -1,0 +1,25 @@
+.product-grid-container {
+    padding-top: 80px;
+    width: 45%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.product-grid-container h1 {
+    position: fixed;
+    height: 50px;
+    width: inherit;
+    background-color: rgb(248, 245, 236);
+    z-index: 100;
+}
+
+.product-grid-items {
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    
+}
+

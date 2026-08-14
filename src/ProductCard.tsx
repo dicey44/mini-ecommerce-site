@@ -12,10 +12,12 @@ export default function ProductCard( { product }: ProductCardProps ) {
     const { addToCart } = useCart();
 
     return (
-        <div>
+        <div className="product-card">
             <img src={product.image_url} className="product-card-img"/>
-            <p>{product.name}</p>
-            <p>{`$${product.price}`}</p>
+            <div className="product-card-content">
+                <p className="product-card-name">{product.name}</p>
+                <p className="product-card-price">{`$${product.price}`}</p>
+            </div>
             <button onClick={() => addToCart(product)}>Add to Cart</button>
         </div>
     )

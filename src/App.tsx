@@ -2,6 +2,7 @@ import './App.css';
 import type { Product, } from './types/product';
 import { ProductGrid } from './ProductGrid';
 import Cart from './Cart';
+import logo from "./assets/images/logo.png"
 
 
 function App() {
@@ -50,7 +51,56 @@ function App() {
       price: 1000,
       image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSctYUCGBmJO7WiLVbJj6oNJ64bBhnau_D9pQ&s",
       id: 7
-    }
+    },
+    {
+      name: "Leather Wallet",
+      price: 35,
+      image_url: "https://images.unsplash.com/photo-1627123424574-724758594e93",
+      id: 8
+    },
+    {
+      name: "Wireless Headphones",
+      price: 120,
+      image_url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+      id: 9
+    },
+    {
+      name: "Running Shoes",
+      price: 85,
+      image_url: "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+      id: 10
+    },
+    {
+      name: "Travel Backpack",
+      price: 70,
+      image_url: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+      id: 11
+    },
+    {
+      name: "Coffee Mug",
+      price: 18,
+      image_url: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d",
+      id: 12
+    },
+    {
+      name: "Mechanical Keyboard",
+      price: 110,
+      image_url: "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
+      id: 13
+    },
+    {
+      name: "Desk Lamp",
+      price: 45,
+      image_url: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c",
+      id: 14
+    },
+    {
+      name: "Sunglasses",
+      price: 55,
+      image_url: "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+      id: 15
+    },
+    
   ]
 
   
@@ -58,7 +108,7 @@ function App() {
 
   return (
     <div>
-      <h1>MiMart</h1>
+      <header className='header'><img src={logo} className='header-logo'></img></header>
       <ProductGrid productList={productList} />
       <Cart />
     </div>
