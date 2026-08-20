@@ -1,0 +1,129 @@
+.hide {
+    display: none;
+}
+
+.cart {
+    width: 320px;
+    position: fixed;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 20px 10px 20px;
+}
+
+.cart h2 {
+    margin-bottom: 8px;
+}
+
+.cart h3 {
+    margin-bottom: 4px;
+}
+
+.cart-items {
+    max-height: 30vh;
+    overflow-y: auto;
+    scrollbar-color: rgb(61, 61, 107) white;
+    margin-bottom: 20px
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    padding: 15px 20px;
+    margin-bottom: 12px;
+
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.cart-item p {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.cart-item p span {
+    color: #666;
+    font-weight: 400;
+}
+
+.cart-item strong {
+    font-size: 1.1rem;
+}
+
+.cart-item-buttons {
+    grid-column: 1 / -1;
+
+    display: flex;
+    gap: 8px;
+
+    margin-top: 5px;
+}
+
+.cart-item button {
+    padding: 7px 12px;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: #eee;
+    color: #333;
+
+    font-size: 0.9rem;
+    cursor: pointer;
+
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.cart-item button:hover {
+    background-color: #ddd;
+}
+
+.cart-item button:active {
+    transform: scale(0.97);
+}
+
+.totals {
+    display: flex;
+    justify-content: space-between;
+}
+
+.total-amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+.proceed-to-checkout-btn {
+    width: 100%;
+    padding: 14px 20px;
+    margin-top: 20px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: rgb(61, 61, 107);
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.proceed-to-checkout-btn:hover {
+    background-color: rgb(90, 90, 139);
+}
+
+.proceed-to-checkout-btn:active {
+    transform: scale(0.98);
+}
+
