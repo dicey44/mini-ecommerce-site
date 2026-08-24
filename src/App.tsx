@@ -2,7 +2,9 @@ import './App.css';
 import type { Product, } from './types/product';
 import { ProductGrid } from './ProductGrid';
 import Cart from './Cart';
-import logo from "./assets/images/logo.png"
+import Navbar from './Navbar';
+
+
 
 
 function App() {
@@ -108,7 +110,7 @@ function App() {
 
   return (
     <div>
-      <header className='header'><img src={logo} className='header-logo'></img></header>
+      <Navbar />
       <ProductGrid productList={productList} />
       <Cart />
     </div>

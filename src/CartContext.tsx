@@ -8,6 +8,7 @@ interface CartContextType {
     cart: CartItem[];
     removeFromCart: (product: Product) => void;
     addToCart: (product: Product) => void;
+    totalQuantity: number;
 }
 
 interface CartProviderProps {
@@ -80,13 +81,16 @@ export function CartProvider({children}: CartProviderProps) {
 
   }
 
+  let totalQuantity: number = cart.reduce((total, item) => total + item.quantity, 0);
+    
 
 
   return (
     <CartContext.Provider value={{
         cart,
         addToCart: addToCart,
-        removeFromCart: removeFromCart
+        removeFromCart: removeFromCart,
+        totalQuantity: totalQuantity
     }} >{children}</CartContext.Provider>
   )
 }
