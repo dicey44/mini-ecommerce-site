@@ -1,6 +1,6 @@
 .product-grid-container {
     padding-top: 30px;
-
+    width: 90%;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -18,8 +18,8 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     width: 100%;
-    max-width: 1000px;
+    
     margin: 0 auto;
-    border: 2px solid red;
+    
 }
 
