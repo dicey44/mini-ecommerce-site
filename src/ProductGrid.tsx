@@ -11,7 +11,7 @@ interface ProductGridProps {
 export function ProductGrid( { productList }: ProductGridProps ) {
 
     return <div className="product-grid-container">
-        <h1>Product Listings</h1>
+        <h2>Product Listings</h2>
         <div className="product-grid-items">
             {productList.map((product: Product) => 
             (

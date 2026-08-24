@@ -1,9 +1,9 @@
 import './App.css';
-import type { Product, } from './types/product';
+import type { Product } from './types/product';
 import { ProductGrid } from './ProductGrid';
 import Cart from './Cart';
 import Navbar from './Navbar';
-
+import HomeBanner from './HomeBanner';
 
 
 
@@ -111,6 +111,7 @@ function App() {
   return (
     <div>
       <Navbar />
+      <HomeBanner />
       <ProductGrid productList={productList} />
       <Cart />
     </div>
