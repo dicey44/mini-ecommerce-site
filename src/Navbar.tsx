@@ -1,9 +1,9 @@
 import logo from "./assets/images/logo.png"
 import cartLogo from "./assets/images/cart-outline.svg"
 import accountLogo from "./assets/images/account-outline.svg"
+import searchIcon from "./assets/images/magnify.svg"
 import "./Navbar.css"
 import { useCart } from "./CartContext"
-
 
 
 
@@ -25,6 +25,7 @@ export default function Navbar() {
         
         <div className="search">
             <input type="text" placeholder="Search products..."></input>
+            <img src={searchIcon} className="header-svg"></img>
         </div>
         
         <div className="account">
