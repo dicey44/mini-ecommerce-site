@@ -116,7 +116,7 @@ function App() {
     <div>
       <Navbar searchProduct={searchProduct}/>
       <HomeBanner />
-      <ProductGrid productList={productList} />
+        <ProductGrid productList={productList} />
       <Cart />
     </div>
   )
