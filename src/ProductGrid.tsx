@@ -9,12 +9,20 @@ interface ProductGridProps {
     productList: Product[];
     isLoading: boolean;
     error: null | string;
+    filterProducts: (filter: string | number) => void;
 }
 
-export function ProductGrid( { productList, isLoading, error }: ProductGridProps ) {
+export function ProductGrid( { productList, isLoading, error, filterProducts }: ProductGridProps ) {
 
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(2000);
+    const [selectedCategory, setSelectedCategory] = useState("all products");
+
+    function handleCategoryChange(event: React.ChangeEvent<HTMLSelectElement>) {
+        const category = event.target.value.toLowerCase();
+        setSelectedCategory(category);
+        filterProducts(category);
+    }
     
     return (
         <div className="product-and-filter-container">
@@ -24,13 +32,12 @@ export function ProductGrid( { productList, isLoading, error }: ProductGridProps
                     <button className="reset-filters">Reset</button>
                 </div>
                 <h3 className="filters-labels">Categories</h3>
-                <select>
-                    <option>All Products</option>
-                    <option>Clothing</option>
-                    <option>Bags</option>
-                    <option>Accessories</option>
-                    <option>Home</option>
-                    <option>Electronics</option>
+                <select value={selectedCategory} onChange={handleCategoryChange}>
+                    <option value="all products">All Products</option>
+                    <option value="men's clothing">Men's Clothing</option>
+                    <option value="women's clothing">Women's Clothing</option>
+                    <option value="jewelery">Jewelery</option>
+                    <option value="electronics">Electronics</option>
                 </select>
                 <div className="price-filter">
                     <h3 className="filters-labels">Price Range</h3>

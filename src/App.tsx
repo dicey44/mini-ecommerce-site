@@ -38,11 +38,27 @@ function App() {
     setFilteredProductList(newList);
   }
 
+  function filterProducts(filter: string | number) {
+    
+    if (typeof filter === "string") {
+      if (filter === "all products") {
+      return setFilteredProductList(productList);
+      }
+
+      return setFilteredProductList(productList.filter(product => product.category === filter ));
+    }
+    
+    else if (typeof filter === "number") {
+      
+    }
+
+  }
+
   return (
     <div>
       <Navbar searchProduct={searchProduct}/>
       <HomeBanner />
-      <ProductGrid productList={filteredProductList} isLoading={isLoading} error={error}/>
+      <ProductGrid productList={filteredProductList} isLoading={isLoading} error={error} filterProducts = {filterProducts}/>
       <Cart />
     </div>
   )
