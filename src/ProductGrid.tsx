@@ -7,9 +7,11 @@ import { useState } from "react";
 
 interface ProductGridProps {
     productList: Product[];
+    isLoading: boolean;
+    error: null | string;
 }
 
-export function ProductGrid( { productList }: ProductGridProps ) {
+export function ProductGrid( { productList, isLoading, error }: ProductGridProps ) {
 
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(2000);
@@ -67,7 +69,10 @@ export function ProductGrid( { productList }: ProductGridProps ) {
             </div>
             <div className="product-grid-container">
                 <h2>Product Listings</h2><span>{productList.length} Products</span>
-                {productList.length === 0 && (<p>No Items Found</p>)}
+                <p>{productList.length === 0 && isLoading === false ? "No items found": ""}</p>
+                <p>{isLoading === true && "Loading items..."}</p>
+                <p>{error !== null ? error : ""}</p>
+                
                 <div className="product-grid-items">
                     {productList.map((product: Product) => 
                     (

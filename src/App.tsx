@@ -4,119 +4,45 @@ import { ProductGrid } from './ProductGrid';
 import Cart from './Cart';
 import Navbar from './Navbar';
 import HomeBanner from './HomeBanner';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import { getProducts } from './services/productService';
 
 
 function App() {
 
-  const startingProductList: Product[] = [
-    {
-      name: "Simple Tee",
-      price: 15,
-      image_url: "https://www.nuuds.com/cdn/shop/files/W-1019-WHIT-S_On-Model_Front-Crop_Kenna.jpg?v=1768499909&width=1024",
-      id: 1
-    },
-    {
-      name: "Laptop Backpack",
-      price: 40,
-      image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjbIUEScaDNkTsIes0bBoFHRiO1J_3SAyP-A&s",
-      id: 2
-    },
-    {
-      name: "Large Suitcase",
-      price: 150,
-      image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4GaqaZv4XRQGzN8WcS2lmDwn_zZtZQIvpZw&s",
-      id: 3
-    },
-    {
-      name: "Straight Jeans",
-      price: 50,
-      image_url: "https://dam.dynamiteclothing.com/asset/e18e363d-6164-47d0-ae0a-054f9b060272/100090530_07I_1920x2880.jpg?sw=500&sh=750",
-      id: 4
-    },
-    {
-      name: "Chino Shorts",
-      price: 30,
-      image_url: "https://lscoglobal.scene7.com/is/image/lscoglobal/MB_17202-0004_GLO_CM_DA?fmt=jpeg&qlt=70&resMode=sharp2&fit=crop,1&op_usm=0.6,0.6,8&wid=2000&hei=2500",
-      id: 5
-    },
-    {
-      name: "Belt",
-      price: 15,
-      image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7UchiEY1OwxPE14YbZkBWF0mIJRMA1EMxQ&s",
-      id: 6
-    },
-    {
-      name: "Standing Desk",
-      price: 1000,
-      image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSctYUCGBmJO7WiLVbJj6oNJ64bBhnau_D9pQ&s",
-      id: 7
-    },
-    {
-      name: "Leather Wallet",
-      price: 35,
-      image_url: "https://images.unsplash.com/photo-1627123424574-724758594e93",
-      id: 8
-    },
-    {
-      name: "Wireless Headphones",
-      price: 120,
-      image_url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
-      id: 9
-    },
-    {
-      name: "Running Shoes",
-      price: 85,
-      image_url: "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
-      id: 10
-    },
-    {
-      name: "Travel Backpack",
-      price: 70,
-      image_url: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
-      id: 11
-    },
-    {
-      name: "Coffee Mug",
-      price: 18,
-      image_url: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d",
-      id: 12
-    },
-    {
-      name: "Mechanical Keyboard",
-      price: 110,
-      image_url: "https://images.unsplash.com/photo-1587829741301-dc798b83add3",
-      id: 13
-    },
-    {
-      name: "Desk Lamp",
-      price: 45,
-      image_url: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c",
-      id: 14
-    },
-    {
-      name: "Sunglasses",
-      price: 55,
-      image_url: "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
-      id: 15
-    },
-    
-  ]
+  const [productList, setProductList] = useState<Product[]>([]);
+  const [filteredProductList, setFilteredProductList] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const [productList, setProductList] = useState<Product[]>(startingProductList)
+  useEffect(
+    () => {
+      async function loadProducts() {
+        try {
+          const products = await getProducts();
+          setProductList(products);
+          setFilteredProductList(products);
+        } catch (error) {
+          setError("Failed to load products.");
+        } finally {
+          setIsLoading(false);
+        }
+      }
+
+      loadProducts()
+    }, []);
 
   function searchProduct(input: string) {
-    const trimmedInput = input.trim().toLowerCase()
-    const newList = startingProductList.filter(product => product.name.toLowerCase().includes(trimmedInput));
-    setProductList(newList);
+    const trimmedInput = input.trim().toLowerCase();
+    const newList = productList.filter(product => product.name.toLowerCase().includes(trimmedInput));
+    setFilteredProductList(newList);
   }
 
   return (
     <div>
       <Navbar searchProduct={searchProduct}/>
       <HomeBanner />
-        <ProductGrid productList={productList} />
+      <ProductGrid productList={filteredProductList} isLoading={isLoading} error={error}/>
       <Cart />
     </div>
   )
