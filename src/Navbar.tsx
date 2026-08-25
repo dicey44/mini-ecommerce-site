@@ -4,12 +4,18 @@ import accountLogo from "./assets/images/account-outline.svg"
 import searchIcon from "./assets/images/magnify.svg"
 import "./Navbar.css"
 import { useCart } from "./CartContext"
+import { useState } from "react"
 
 
+interface NavbarProps {
+    searchProduct: (input: string) => void;
+}
 
-export default function Navbar() {
+export default function Navbar({ searchProduct }: NavbarProps) {
     const { totalQuantity, openCart } = useCart();
 
+    const [searchValue, setSearchValue] = useState("");
+    
     return (
     <header className='header'>
         <div className="logo">
@@ -24,8 +30,8 @@ export default function Navbar() {
         </nav>
         
         <div className="search">
-            <input type="text" placeholder="Search products..."></input>
-            <img src={searchIcon} className="header-svg"></img>
+            <input type="text" placeholder="Search products..." value={searchValue} onChange={e => setSearchValue(e.target.value)}></input>
+            <img src={searchIcon} className="header-svg" onClick={() => searchProduct(searchValue)}></img>
         </div>
         
         <div className="account">

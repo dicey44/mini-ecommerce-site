@@ -4,14 +4,13 @@ import { ProductGrid } from './ProductGrid';
 import Cart from './Cart';
 import Navbar from './Navbar';
 import HomeBanner from './HomeBanner';
+import { useState } from 'react';
 
 
 
 function App() {
 
-  
-
-  const productList: Product[] = [
+  const startingProductList: Product[] = [
     {
       name: "Simple Tee",
       price: 15,
@@ -105,12 +104,17 @@ function App() {
     
   ]
 
-  
-  
+  const [productList, setProductList] = useState<Product[]>(startingProductList)
+
+  function searchProduct(input: string) {
+    const trimmedInput = input.trim().toLowerCase()
+    const newList = startingProductList.filter(product => product.name.toLowerCase().includes(trimmedInput));
+    setProductList(newList);
+  }
 
   return (
     <div>
-      <Navbar />
+      <Navbar searchProduct={searchProduct}/>
       <HomeBanner />
       <ProductGrid productList={productList} />
       <Cart />
