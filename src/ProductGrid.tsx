@@ -21,7 +21,7 @@ export function ProductGrid( { productList }: ProductGridProps ) {
                     <h2>Filters</h2>
                     <button className="reset-filters">Reset</button>
                 </div>
-                <label>Categories</label>
+                <h3 className="filters-labels">Categories</h3>
                 <select>
                     <option>All Products</option>
                     <option>Clothing</option>
@@ -31,7 +31,7 @@ export function ProductGrid( { productList }: ProductGridProps ) {
                     <option>Electronics</option>
                 </select>
                 <div className="price-filter">
-                    <label>Price Range</label>
+                    <h3 className="filters-labels">Price Range</h3>
 
                     <div className="price-values">
                         <span>${minPrice}</span>
@@ -58,7 +58,7 @@ export function ProductGrid( { productList }: ProductGridProps ) {
                         />
                     </div>
                 </div>
-                <label>Sort By</label>
+                <h3 className="filters-labels">Sort By</h3>
                 <select>
                     <option>Featured</option>
                     <option>Price: lowest to highest</option>
