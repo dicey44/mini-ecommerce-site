@@ -8,7 +8,7 @@ import { useCart } from "./CartContext"
 
 
 export default function Navbar() {
-    const { totalQuantity } = useCart();
+    const { totalQuantity, openCart } = useCart();
 
     return (
     <header className='header'>
@@ -32,7 +32,7 @@ export default function Navbar() {
             Account
         </div>
 
-        <button className="cart-button">
+        <button className="cart-button" onClick={openCart}>
             <img src={cartLogo} className="header-svg"/>
             <span className="cart-count">{totalQuantity}</span>
         </button>

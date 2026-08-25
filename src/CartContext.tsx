@@ -9,6 +9,9 @@ interface CartContextType {
     removeFromCart: (product: Product) => void;
     addToCart: (product: Product) => void;
     totalQuantity: number;
+    cartStatus: string;
+    openCart: () => void;
+    closeCart: () => void;
 }
 
 interface CartProviderProps {
@@ -32,6 +35,7 @@ export function useCart() {
 
 export function CartProvider({children}: CartProviderProps) {
     const [cart, setCart] = useState<CartItem[]>([]);
+    const [cartStatus, setCartStatus] = useState<string>("hide");
 
     function addToCart(product: Product) {
 
@@ -81,6 +85,14 @@ export function CartProvider({children}: CartProviderProps) {
 
   }
 
+  function openCart() {
+    setCartStatus("cart");
+  }
+
+  function closeCart() {
+    setCartStatus("cart hide");
+  }
+
   let totalQuantity: number = cart.reduce((total, item) => total + item.quantity, 0);
     
 
@@ -90,7 +102,10 @@ export function CartProvider({children}: CartProviderProps) {
         cart,
         addToCart: addToCart,
         removeFromCart: removeFromCart,
-        totalQuantity: totalQuantity
+        totalQuantity: totalQuantity,
+        cartStatus: cartStatus,
+        openCart: openCart,
+        closeCart: closeCart
     }} >{children}</CartContext.Provider>
   )
 }
