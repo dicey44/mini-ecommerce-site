@@ -15,6 +15,12 @@ export default function Navbar({ searchProduct }: NavbarProps) {
     const { totalQuantity, openCart } = useCart();
 
     const [searchValue, setSearchValue] = useState("");
+
+    function handleEnterPress(event: React.KeyboardEvent<HTMLInputElement>) {
+        if (event.key === "Enter") {
+            return searchProduct(searchValue);
+        }
+    }
     
     return (
     <header className='header'>
@@ -30,7 +36,7 @@ export default function Navbar({ searchProduct }: NavbarProps) {
         </nav>
         
         <div className="search">
-            <input type="text" placeholder="Search products..." value={searchValue} onChange={e => setSearchValue(e.target.value)}></input>
+            <input type="text" placeholder="Search products..." value={searchValue} onChange={e => setSearchValue(e.target.value)} onKeyDown={handleEnterPress}></input>
             <img src={searchIcon} className="header-svg" onClick={() => searchProduct(searchValue)}></img>
         </div>
         

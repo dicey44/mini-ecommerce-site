@@ -12,6 +12,7 @@ export function ProductGrid( { productList }: ProductGridProps ) {
 
     return <div className="product-grid-container">
         <h2>Product Listings</h2>
+        {productList.length === 0 && (<p>No Items Found</p>)}
         <div className="product-grid-items">
             {productList.map((product: Product) => 
             (
