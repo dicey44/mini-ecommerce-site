@@ -35,7 +35,7 @@ export function useCart() {
 
 export function CartProvider({children}: CartProviderProps) {
     const [cart, setCart] = useState<CartItem[]>([]);
-    const [cartStatus, setCartStatus] = useState<string>("hide");
+    const [cartStatus, setCartStatus] = useState<string>("cart hide");
 
     function addToCart(product: Product) {
 
