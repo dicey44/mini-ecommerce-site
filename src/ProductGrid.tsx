@@ -56,7 +56,7 @@ export function ProductGrid( { productList, isLoading, error, filterProducts }: 
                             min="0"
                             max="1000"
                             value={sliderMin}
-                            onMouseUp={() => {                               
+                            onPointerUp={() => {                               
                                     setMinPrice(sliderMin);
                                     filterProducts(selectedCategory, sliderMin, maxPrice);
                             }}
@@ -83,7 +83,7 @@ export function ProductGrid( { productList, isLoading, error, filterProducts }: 
                                     setSliderMax(value)
                                 }
                             }}
-                            onMouseUp={() => {
+                            onPointerUp={() => {
                                 setMaxPrice(sliderMax);
                                 filterProducts(selectedCategory, minPrice, sliderMax);
                             }}
