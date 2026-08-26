@@ -1,4 +1,6 @@
 .product-card {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
@@ -8,7 +10,7 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
     z-index: 1;
-    max-width: 300px;
+    max-width: 250px;
 }
 
 .product-card:hover {
@@ -35,14 +37,13 @@
 }
 
 .product-card-price {
-    margin: 0 0 12px;
     font-size: 18px;
     font-weight: 700;
 }
 
 .product-card button {
     width: 80%;
-    margin: 0 auto;
+    margin: auto auto 0 auto;
     padding: 9px;
     display: block;
     border: 1px solid #ddd;
