@@ -33,14 +33,22 @@ export function ProductGrid( { productList, isLoading, error, filterProducts }: 
         filterProducts(selectedCategory, minPrice, maxPrice, method);
     }
 
-    
+    function handleResetBtn() {
+        setSelectedCategory("all products");
+        setSortingMethod("featured");
+        setMinPrice(0);
+        setSliderMin(0);
+        setSliderMax(1000);
+        setMaxPrice(1000);
+        filterProducts("all products", 0, 1000, "featured");
+    }
     
     return (
         <div className="product-and-filter-container">
             <div className="filters-container">
                 <div className="filters-header">
                     <h2>Filters</h2>
-                    <button className="reset-filters">Reset</button>
+                    <button className="reset-filters" onClick={handleResetBtn}>Reset</button>
                 </div>
                 <h3 className="filters-labels">Categories</h3>
                 <select value={selectedCategory} onChange={handleCategoryChange}>
