@@ -9,7 +9,7 @@ interface ProductGridProps {
     productList: Product[];
     isLoading: boolean;
     error: null | string;
-    filterProducts: (category: string, minPrice: number, maxPrice: number) => void;
+    filterProducts: (category: string, minPrice: number, maxPrice: number, method: string) => void;
 }
 
 export function ProductGrid( { productList, isLoading, error, filterProducts }: ProductGridProps ) {
@@ -19,12 +19,21 @@ export function ProductGrid( { productList, isLoading, error, filterProducts }: 
     const [maxPrice, setMaxPrice] = useState(1000);
     const [sliderMax, setSliderMax] = useState(1000);
     const [selectedCategory, setSelectedCategory] = useState("all products");
+    const [sortingMethod, setSortingMethod] = useState("featured");
 
     function handleCategoryChange(event: React.ChangeEvent<HTMLSelectElement>) {
         const category = event.target.value.toLowerCase();
         setSelectedCategory(category);
-        filterProducts(category, minPrice, maxPrice);
+        filterProducts(category, minPrice, maxPrice, sortingMethod);
     }
+
+    function handleSortingMethodChange(event: React.ChangeEvent<HTMLSelectElement>) {
+        const method = event.target.value.toLowerCase();
+        setSortingMethod(method);
+        filterProducts(selectedCategory, minPrice, maxPrice, method);
+    }
+
+    
     
     return (
         <div className="product-and-filter-container">
@@ -58,7 +67,7 @@ export function ProductGrid( { productList, isLoading, error, filterProducts }: 
                             value={sliderMin}
                             onPointerUp={() => {                               
                                     setMinPrice(sliderMin);
-                                    filterProducts(selectedCategory, sliderMin, maxPrice);
+                                    filterProducts(selectedCategory, sliderMin, maxPrice, sortingMethod);
                             }}
                             onChange={(e) => {
                                 const value = Number(e.target.value);
@@ -85,16 +94,16 @@ export function ProductGrid( { productList, isLoading, error, filterProducts }: 
                             }}
                             onPointerUp={() => {
                                 setMaxPrice(sliderMax);
-                                filterProducts(selectedCategory, minPrice, sliderMax);
+                                filterProducts(selectedCategory, minPrice, sliderMax, sortingMethod);
                             }}
                         />
                     </div>
                 </div>
                 <h3 className="filters-labels">Sort By</h3>
-                <select>
-                    <option>Featured</option>
-                    <option>Price: lowest to highest</option>
-                    <option>Price: highest to lowest</option>
+                <select value={sortingMethod} onChange={handleSortingMethodChange}>
+                    <option value="featured">Featured</option>
+                    <option value="price-lowest">Price: lowest to highest</option>
+                    <option value="price-highest">Price: highest to lowest</option>
                 </select>
             </div>
             <div className="product-grid-container">
