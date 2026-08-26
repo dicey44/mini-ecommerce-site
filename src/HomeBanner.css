@@ -4,28 +4,28 @@
     grid-template-columns: 1fr 1fr;
     background-color: rgb(247, 226, 208);
     overflow: hidden;
-}
-
-.home-banner-img {
-    height: 100%;
+    
+    border: 2px solid;
 }
 
 .home-banner-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    
 }
 
 .home-banner-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 60px;
+    justify-content: flex-start;
+    padding-top: 12vh;
+    padding-left: 50px;
 }
 
 .home-banner-content h1 {
   font-size: 3rem;
-  margin: 0 0 15px;
+  margin: 0 0 15px 0;
 }
 
 .home-banner-content h1:last-of-type {
