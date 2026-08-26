@@ -16,7 +16,7 @@ export default function ProductCard( { product }: ProductCardProps ) {
             <img src={product.image_url} className="product-card-img"/>
             <div className="product-card-content">
                 <p className="product-card-name">{product.name}</p>
-                <p className="product-card-price">{`$${product.price}`}</p>
+                <p className="product-card-price">{`$${product.price.toFixed(2)}`}</p>
             </div>
             <button onClick={() => addToCart(product)}>Add to Cart</button>
         </div>

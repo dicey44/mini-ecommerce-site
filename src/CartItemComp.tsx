@@ -14,7 +14,7 @@ export default function CartItemComp( { cartListing }: CartItemProps ) {
             
             <p>{cartListing.product.name}<span> x {cartListing.quantity}</span></p>
                 
-            <strong>${cartListing.quantity * cartListing.product.price}</strong>
+            <strong>${(cartListing.quantity * cartListing.product.price).toFixed(2)}</strong>
             <br/>
             <div className="cart-item-buttons">
                 <button onClick={() => removeFromCart(cartListing.product)}>Remove -</button>
