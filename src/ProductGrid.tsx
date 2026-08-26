@@ -9,19 +9,21 @@ interface ProductGridProps {
     productList: Product[];
     isLoading: boolean;
     error: null | string;
-    filterProducts: (filter: string | number) => void;
+    filterProducts: (category: string, minPrice: number, maxPrice: number) => void;
 }
 
 export function ProductGrid( { productList, isLoading, error, filterProducts }: ProductGridProps ) {
 
     const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(2000);
+    const [sliderMin, setSliderMin] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(1000);
+    const [sliderMax, setSliderMax] = useState(1000);
     const [selectedCategory, setSelectedCategory] = useState("all products");
 
     function handleCategoryChange(event: React.ChangeEvent<HTMLSelectElement>) {
         const category = event.target.value.toLowerCase();
         setSelectedCategory(category);
-        filterProducts(category);
+        filterProducts(category, minPrice, maxPrice);
     }
     
     return (
@@ -43,8 +45,8 @@ export function ProductGrid( { productList, isLoading, error, filterProducts }: 
                     <h3 className="filters-labels">Price Range</h3>
 
                     <div className="price-values">
-                        <span>${minPrice}</span>
-                        <span>${maxPrice}</span>
+                        <span>${sliderMin}</span>
+                        <span>${sliderMax}</span>
                     </div>
 
                     <div className="range-slider">
@@ -52,18 +54,39 @@ export function ProductGrid( { productList, isLoading, error, filterProducts }: 
                             className="min-range"
                             type="range"
                             min="0"
-                            max="2000"
-                            value={minPrice}
-                            onChange={(e) => setMinPrice(Number(e.target.value))}
+                            max="1000"
+                            value={sliderMin}
+                            onMouseUp={() => {                               
+                                    setMinPrice(sliderMin);
+                                    filterProducts(selectedCategory, sliderMin, maxPrice);
+                            }}
+                            onChange={(e) => {
+                                const value = Number(e.target.value);
+
+                                if (value <= maxPrice) {
+                                    setSliderMin(value);
+                                    
+                                }
+                            }}
                         />
 
                         <input
                             className="max-range"
                             type="range"
                             min="0"
-                            max="2000"
-                            value={maxPrice}
-                            onChange={(e) => setMaxPrice(Number(e.target.value))}
+                            max="1000"
+                            value={sliderMax}
+                            onChange={(e) => {
+                                const value = Number(e.target.value);
+
+                                if (value >= minPrice) {
+                                    setSliderMax(value)
+                                }
+                            }}
+                            onMouseUp={() => {
+                                setMaxPrice(sliderMax);
+                                filterProducts(selectedCategory, minPrice, sliderMax);
+                            }}
                         />
                     </div>
                 </div>

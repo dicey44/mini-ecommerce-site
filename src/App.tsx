@@ -38,20 +38,16 @@ function App() {
     setFilteredProductList(newList);
   }
 
-  function filterProducts(filter: string | number) {
-    
-    if (typeof filter === "string") {
-      if (filter === "all products") {
-      return setFilteredProductList(productList);
-      }
+  function filterProducts(category: string, minPrice: number, maxPrice: number) {
 
-      return setFilteredProductList(productList.filter(product => product.category === filter ));
-    }
-    
-    else if (typeof filter === "number") {
-      
-    }
+    const filtered = productList.filter(product => {
+      const matchesCategory = category === "all products" || product.category === category
+      const matchesPrice = product.price >= minPrice && product.price <= maxPrice
 
+      return matchesCategory && matchesPrice;
+    })
+    
+    setFilteredProductList(filtered);
   }
 
   return (
