@@ -4,8 +4,6 @@
     grid-template-columns: 1fr 1fr;
     background-color: rgb(247, 226, 208);
     overflow: hidden;
-    
-    border: 2px solid;
 }
 
 .home-banner-img img {
