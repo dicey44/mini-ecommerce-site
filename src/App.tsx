@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import HomeBanner from './HomeBanner';
 import { useEffect, useState } from 'react';
 import { getProducts } from './services/productService';
+import Footer from './Footer';
 
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
       <HomeBanner />
       <ProductGrid productList={filteredProductList} isLoading={isLoading} error={error} filterProducts = {filterProducts}/>
       <Cart />
+      <Footer />
     </div>
   )
 }
