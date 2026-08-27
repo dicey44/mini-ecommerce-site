@@ -35,7 +35,7 @@ export default function Cart() {
                 </div>
                 
                 <div className="totals first-total">
-                    <span >Subtotal</span><span>${subTotal}</span>
+                    <span >Subtotal</span><span>${subTotal.toFixed(2)}</span>
                 </div>
                 <div className="totals">
                     <span className="total-tax">Tax</span><span>${totalTax.toFixed(2)}</span>
