@@ -50,11 +50,11 @@
 }
 
 /* Active navigation link */
-.nav a.active {
+.all-products {
     color: #f47b20;
 }
 
-.nav a.active::after {
+.all-products::after {
     content: "";
     position: absolute;
     bottom: 0;

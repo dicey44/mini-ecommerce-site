@@ -34,7 +34,7 @@ export default function Navbar({ searchProduct }: NavbarProps) {
         </div>
         
         <nav className="nav">
-            <a href="#" className="All Products">{t.allProducts}</a>
+            <a href="#" className="all-products">{t.allProducts}</a>
             <a href="#">{t.categories}</a>
             <a href="#">{t.aboutUs}</a>
         </nav>
