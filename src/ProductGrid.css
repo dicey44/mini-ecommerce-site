@@ -232,6 +232,10 @@
 }
 
 @media (max-width: 1280px) {
+    .product-and-filter-container {
+        gap: 10px;
+
+    }
     .product-grid-items {
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
@@ -242,5 +246,24 @@
         background-color: #ffffff;
         width: 20%;
     }
+}
 
+@media (max-width: 800px) {
+    .product-and-filter-container {
+        flex-direction: column;
+    }
+    .filters-container {
+        padding: 24px;
+        background-color: #ffffff;
+        width: 100%;
+    }
+    .product-grid-items {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+    }
+    .product-grid-container {
+    width: 100%;
+    }
 }
