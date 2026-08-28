@@ -5,7 +5,7 @@ import { LanguageContext } from "./LanguageContext";
 
 
 export default function Footer() {
-    const {language} = useContext(LanguageContext);
+    const { language, changeLanguage } = useContext(LanguageContext);
     const t = translations[language].footer;
 
     return (
@@ -35,6 +35,15 @@ export default function Footer() {
 
             <div className="footer-bottom">
                 <p>{t.copyright}</p>
+                <div className="language-switcher">
+                <button className={language === "en" ? "current-lang": ""} onClick={() => changeLanguage("en")}>
+                    English
+                </button>
+
+                <button className={language === "ja" ? "current-lang": ""} onClick={() => changeLanguage("ja")}>
+                    日本語
+                </button>
+        </div>
             </div>
         </footer>
     );

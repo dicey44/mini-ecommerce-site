@@ -215,9 +215,12 @@
     }
 }
 
-@media (max-width: 768px) {
-    .language-switcher {
+@media (max-width: 800px) {
+    .header .language-switcher {
         display: none;
+    }
+    .header {
+        gap: 15px;
     }
 }
 
