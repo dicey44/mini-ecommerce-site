@@ -36,7 +36,6 @@ export default function Navbar({ searchProduct }: NavbarProps) {
         <nav className="nav">
             <a href="#" className="All Products">{t.allProducts}</a>
             <a href="#">{t.categories}</a>
-            <a href="#">{t.deals}</a>
             <a href="#">{t.aboutUs}</a>
         </nav>
         
