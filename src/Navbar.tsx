@@ -4,7 +4,9 @@ import accountLogo from "./assets/images/account-outline.svg"
 import searchIcon from "./assets/images/magnify.svg"
 import "./Navbar.css"
 import { useCart } from "./CartContext"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { translations } from "./translations"
+import { LanguageContext } from "./LanguageContext"
 
 
 interface NavbarProps {
@@ -13,8 +15,11 @@ interface NavbarProps {
 
 export default function Navbar({ searchProduct }: NavbarProps) {
     const { totalQuantity, openCart } = useCart();
-
     const [searchValue, setSearchValue] = useState("");
+
+    const { language, changeLanguage } = useContext(LanguageContext);
+
+    const t = translations[language].navBar;
 
     function handleEnterPress(event: React.KeyboardEvent<HTMLInputElement>) {
         if (event.key === "Enter") {
@@ -29,20 +34,28 @@ export default function Navbar({ searchProduct }: NavbarProps) {
         </div>
         
         <nav className="nav">
-            <a href="#" className="All Products">All Products</a>
-            <a href="#">Categories</a>
-            <a href="#">Deals</a>
-            <a href="#">About Us</a>
+            <a href="#" className="All Products">{t.allProducts}</a>
+            <a href="#">{t.categories}</a>
+            <a href="#">{t.deals}</a>
+            <a href="#">{t.aboutUs}</a>
         </nav>
         
         <div className="search">
-            <input type="text" placeholder="Search products..." value={searchValue} onChange={e => setSearchValue(e.target.value)} onKeyDown={handleEnterPress}></input>
+            <input type="text" placeholder={t.search} value={searchValue} onChange={e => setSearchValue(e.target.value)} onKeyDown={handleEnterPress}></input>
             <img src={searchIcon} className="header-svg" onClick={() => searchProduct(searchValue)}></img>
         </div>
-        
+        <div className="language-switcher">
+            <button className={language === "en" ? "current-lang": ""} onClick={() => changeLanguage("en")}>
+                English
+            </button>
+
+            <button className={language === "ja" ? "current-lang": ""} onClick={() => changeLanguage("ja")}>
+                日本語
+            </button>
+        </div>
         <div className="account">
             <img src={accountLogo} className="header-svg"/>
-            Account
+            {t.account}
         </div>
 
         <button className="cart-button" onClick={openCart}>

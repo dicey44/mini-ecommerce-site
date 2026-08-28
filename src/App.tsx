@@ -4,18 +4,21 @@ import { ProductGrid } from './ProductGrid';
 import Cart from './Cart';
 import Navbar from './Navbar';
 import HomeBanner from './HomeBanner';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { getProducts } from './services/productService';
 import Footer from './Footer';
+import { LanguageContext } from './LanguageContext';
+import { productTranslations } from './translations';
 
 
 function App() {
+
+  const { language } = useContext(LanguageContext);
 
   const [productList, setProductList] = useState<Product[]>([]);
   const [filteredProductList, setFilteredProductList] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   
 
   useEffect(
@@ -45,7 +48,17 @@ function App() {
 
     let filtered = productList.filter(product => {
       const matchesCategory = category === "all products" || product.category === category
-      const matchesPrice = product.price >= minPrice && product.price <= maxPrice
+      let matchesPrice;
+      
+      if (language === "ja") {
+        const productPrice = productTranslations[product.id].price;
+        matchesPrice = productPrice >= minPrice && productPrice <= maxPrice
+      } else {
+        matchesPrice = product.price >= minPrice && product.price <= maxPrice;
+      }
+
+      
+
 
       return matchesCategory && matchesPrice;
     })
@@ -70,9 +83,11 @@ function App() {
 
   
 
+  
+
   return (
     <div>
-      <Navbar searchProduct={searchProduct}/>
+      <Navbar searchProduct={searchProduct} />
       <HomeBanner />
       <ProductGrid productList={filteredProductList} isLoading={isLoading} error={error} filterProducts = {filterProducts}/>
       <Cart />

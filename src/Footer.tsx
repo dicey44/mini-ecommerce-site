@@ -1,33 +1,40 @@
 import "./Footer.css"
+import { useContext } from "react";
+import { translations } from "./translations";
+import { LanguageContext } from "./LanguageContext";
+
 
 export default function Footer() {
+    const {language} = useContext(LanguageContext);
+    const t = translations[language].footer;
+
     return (
         <footer className="footer">
             <div className="footer-content">
                 <div className="footer-section">
-                    <h2>MiMart</h2>
-                    <p>Your one-stop shop for everyday products.</p>
+                    <h2>{t.miMart}</h2>
+                    <p>{t.caption}</p>
                 </div>
 
                 <div className="footer-section">
-                    <h3>Shop</h3>
-                    <a href="#">All Products</a>
-                    <a href="#">Men's Clothing</a>
-                    <a href="#">Women's Clothing</a>
-                    <a href="#">Electronics</a>
+                    <h3>{t.shop}</h3>
+                    <a href="#">{t.allProducts}</a>
+                    <a href="#">{t.mensClothing}</a>
+                    <a href="#">{t.womensClothing}</a>
+                    <a href="#">{t.electronics}</a>
                 </div>
 
                 <div className="footer-section">
-                    <h3>About</h3>
-                    <a href="#">About Us</a>
-                    <a href="#">Contact</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
+                    <h3>{t.about}</h3>
+                    <a href="#">{t.aboutUs}</a>
+                    <a href="#">{t.contact}</a>
+                    <a href="#">{t.privacy}</a>
+                    <a href="#">{t.terms}</a>
                 </div>
             </div>
 
             <div className="footer-bottom">
-                <p>© 2026 MiMart. All rights reserved.</p>
+                <p>{t.copyright}</p>
             </div>
         </footer>
     );
