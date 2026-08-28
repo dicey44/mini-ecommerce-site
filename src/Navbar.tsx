@@ -54,7 +54,7 @@ export default function Navbar({ searchProduct }: NavbarProps) {
         </div>
         <div className="account">
             <img src={accountLogo} className="header-svg"/>
-            {t.account}
+            <p>{t.account}</p>
         </div>
 
         <button className="cart-button" onClick={openCart}>
