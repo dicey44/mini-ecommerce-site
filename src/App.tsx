@@ -19,6 +19,7 @@ function App() {
   const [filteredProductList, setFilteredProductList] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchInput, setSearchInput] = useState("");
   
 
   useEffect(
@@ -40,7 +41,9 @@ function App() {
 
   function searchProduct(input: string) {
     const trimmedInput = input.trim().toLowerCase();
-    const newList = productList.filter(product => product.name.toLowerCase().includes(trimmedInput));
+    setSearchInput(trimmedInput);
+    const newList = productList.filter(product => product.name.toLowerCase().includes(trimmedInput) || 
+    productTranslations[product.id].name.toLowerCase().includes(trimmedInput));
     setFilteredProductList(newList);
   }
 
@@ -63,6 +66,11 @@ function App() {
       return matchesCategory && matchesPrice;
     })
 
+    if (searchInput !== "") {
+      filtered = filtered.filter(product => product.name.toLowerCase().includes(searchInput) || 
+        productTranslations[product.id].name.toLowerCase().includes(searchInput));
+    }
+
     if (method !== "featured") {
       
       sortProducts(method);
@@ -79,6 +87,8 @@ function App() {
         
       }
     }
+
+    
 
     setFilteredProductList(filtered);
   }

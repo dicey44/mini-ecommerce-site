@@ -30,7 +30,7 @@ export default function Navbar({ searchProduct }: NavbarProps) {
     return (
     <header className='header'>
         <div className="logo">
-            <img src={logo} alt="MiMart"/>
+            <a href="http://localhost:5173/mini-ecommerce-site"><img src={logo} alt="MiMart"/></a>
         </div>
         
         <nav className="nav">

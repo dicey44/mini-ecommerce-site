@@ -50,6 +50,7 @@ export function ProductGrid( { productList, isLoading, error, filterProducts }: 
         setSliderMax(max);
 
         filterProducts(selectedCategory, 0, max, sortingMethod);
+        
     }, [language]);
     
 
