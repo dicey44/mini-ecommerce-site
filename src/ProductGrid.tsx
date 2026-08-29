@@ -49,7 +49,7 @@ export function ProductGrid( { productList, isLoading, error, filterProducts }: 
         setMaxPrice(max);
         setSliderMax(max);
 
-        filterProducts("all products", 0, max, sortingMethod);
+        filterProducts(selectedCategory, 0, max, sortingMethod);
     }, [language]);
     
 

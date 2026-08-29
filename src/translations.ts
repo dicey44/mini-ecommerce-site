@@ -136,82 +136,82 @@ export const productTranslations: Record<number, {
 }> = {
     1: {
         name: "フェールラーベン バックパック",
-        price: 16800,
+        price: 11000,
     },
     2: {
         name: "スリムフィット Tシャツ",
-        price: 3200,
+        price: 2230,
     },
     3: {
         name: "コットンジャケット",
-        price: 8800,
+        price: 5600,
     },
     4: {
         name: "カジュアル フィットシャツ",
-        price: 4500,
+        price: 1600,
     },
     5: {
-        name: "ジョン・ハーディ 14Kゴールドピアス",
-        price: 98000,
+        name: "ジョン・ハーディ レディース ナーガ ゴールド＆シルバー ブレスレット",
+        price: 70000,
     },
     6: {
-        name: "ソリッドゴールド ピアス",
-        price: 42000,
+        name: "ソリッドゴールド プチ ミクロパヴェ",
+        price: 16800,
     },
     7: {
         name: "ホワイトゴールド プリンセスカット ダイヤモンド",
-        price: 15000,
+        price: 1000,
     },
     8: {
-        name: "オーシャンハート レディース腕時計",
-        price: 6800,
+        name: "ピアスドアウル ローズゴールド ステンレススチール ダブル",
+        price: 1100,
     },
     9: {
         name: "WD 2TB 外付けハードドライブ",
-        price: 12800,
+        price: 6400,
     },
     10: {
         name: "SanDisk SSD PLUS 1TB",
-        price: 9800,
+        price: 10900,
     },
     11: {
         name: "シリコンパワー 256GB SSD",
-        price: 5200,
+        price: 10900,
     },
     12: {
         name: "WD 4TB ゲーミング用ハードドライブ",
-        price: 16800,
+        price: 11400,
     },
     13: {
         name: "Acer 21.5インチ フルHDモニター",
-        price: 14800,
+        price: 60000,
     },
     14: {
         name: "Samsung 49インチ ゲーミングモニター",
-        price: 128000,
+        price: 100000,
     },
     15: {
         name: "BIYLACLESEN レディース フード付きジャケット",
-        price: 7200,
+        price: 5700,
     },
     16: {
         name: "Lock and Love レディース レインジャケット",
-        price: 6500,
+        price: 3000,
     },
     17: {
-        name: "MBJ レディース ボートネック Tシャツ",
-        price: 2800,
+        name: "レディース ストライプ柄 ウインドブレーカー レインジャケット",
+        price: 4000,
     },
     18: {
-        name: "Opna レディース 半袖Tシャツ",
-        price: 2200,
+        name: "MBJ レディース 無地 半袖 ボートネック トップス",
+        price: 1000,
     },
     19: {
-        name: "DANVOUY レディース カジュアル コットンTシャツ",
-        price: 2500,
+        name: "Opna レディース 半袖Tシャツ",
+        price: 800,
     },
     20: {
-        name: "レディース ステンレススチール ブレスレット",
-        price: 3800,
+        name: "DANVOUY レディース カジュアル コットンTシャツ",
+        price: 1300,
     },
 };

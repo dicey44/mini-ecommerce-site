@@ -52,7 +52,7 @@ function App() {
       
       if (language === "ja") {
         const productPrice = productTranslations[product.id].price;
-        matchesPrice = productPrice >= minPrice && productPrice <= maxPrice
+        matchesPrice = productPrice >= minPrice && productPrice <= maxPrice;
       } else {
         matchesPrice = product.price >= minPrice && product.price <= maxPrice;
       }
@@ -68,13 +68,15 @@ function App() {
       sortProducts(method);
 
       function sortProducts(method: string) {
-        if (method === "price-lowest") {
-            filtered = filtered.sort((a, b) => a.price - b.price)
-        }
 
-        if (method === "price-highest") {
-            filtered = filtered.sort((a, b) => b.price - a.price)
-        }
+          if (method === "price-lowest") {
+            filtered = filtered.sort((a, b) => a.price - b.price);
+          }
+
+          if (method === "price-highest") {
+              filtered = filtered.sort((a, b) => b.price - a.price)
+          }
+        
       }
     }
 
