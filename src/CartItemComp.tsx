@@ -1,5 +1,8 @@
 import type { CartItem } from "./types/product";
 import { useCart } from "./CartContext";
+import { useContext } from "react";
+import { LanguageContext } from "./LanguageContext";
+import { productTranslations } from "./translations";
 
 interface CartItemProps {
     cartListing: CartItem;
@@ -8,13 +11,17 @@ interface CartItemProps {
 export default function CartItemComp( { cartListing }: CartItemProps ) {
 
     const { removeFromCart, addToCart } = useCart();
+    const { language } = useContext(LanguageContext);
+
+    const productName = language === "en" ? cartListing.product.name : productTranslations[cartListing.product.id].name;
+    const productTotalPrice = language === "en" ? (cartListing.quantity * cartListing.product.price).toFixed(2) : productTranslations[cartListing.product.id].price * cartListing.quantity;
 
     return (
          <div className="cart-item">
             
-            <p>{cartListing.product.name}<span> x {cartListing.quantity}</span></p>
+            <p>{productName}<span> x {cartListing.quantity}</span></p>
                 
-            <strong>${(cartListing.quantity * cartListing.product.price).toFixed(2)}</strong>
+            <strong>${productTotalPrice}</strong>
             <br/>
             <div className="cart-item-buttons">
                 <button onClick={() => removeFromCart(cartListing.product)}>Remove -</button>
