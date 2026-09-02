@@ -5,7 +5,7 @@ import "./Cart.css"
 import closeSymbol from "./assets/images/window-close.svg";
 import { useContext } from "react";
 import { LanguageContext } from "./LanguageContext";
-import { productTranslations } from "./translations";
+import { translations, productTranslations } from "./translations";
 
 
 export default function Cart() {
@@ -31,15 +31,17 @@ export default function Cart() {
 
     const moneySign = language === "en" ? "$" : "¥";
 
+    const jaTranslations = translations.ja.cart;
+
     return (
         <div>
             <div className={`cart-overlay ${cartStatus === "cart" ? "visible" : ""}`} onClick={closeCart}></div>
             <div className={cartStatus}>
                 <div className="cart-header">
-                    <h2>My Cart</h2>
+                    <h2>{language === "en" ? "My Cart" : jaTranslations.myCart}</h2>
                     <img src={closeSymbol} onClick={closeCart}></img>                   
                 </div>
-                <h3>Items</h3>
+                <h3>{language === "en" ? "Items" : jaTranslations.items}</h3>
                 <div className="cart-items">
                     {cart.map(( item: CartItem) => {
                         return (
@@ -50,15 +52,15 @@ export default function Cart() {
                 </div>
                 
                 <div className="totals first-total">
-                    <span >Subtotal</span><span>{moneySign}{language === "en" ? subTotal.toFixed(2) : subTotalJa}</span>
+                    <span >{language === "en" ? "Subtotal" : jaTranslations.subTotal}</span><span>{moneySign}{language === "en" ? subTotal.toFixed(2) : subTotalJa}</span>
                 </div>
                 <div className="totals">
-                    <span className="total-tax">Tax</span><span>{moneySign}{language === "en" ? totalTax.toFixed(2) : totalTaxJa}</span>
+                    <span className="total-tax">{language === "en" ? "Tax" : jaTranslations.tax}</span><span>{moneySign}{language === "en" ? totalTax.toFixed(2) : totalTaxJa}</span>
                 </div>
                 <div className="totals total-amount">
-                    <span>Total</span><span>{moneySign}{total}</span>
+                    <span>{language === "en" ? "Total" : jaTranslations.total}</span><span>{moneySign}{total}</span>
                 </div>
-                <button className="proceed-to-checkout-btn">Proceed to Checkout</button>
+                <button className="proceed-to-checkout-btn">{language === "en" ? "Proceed to Checkout" : jaTranslations.checkout}</button>
             </div>
         </div>
         
